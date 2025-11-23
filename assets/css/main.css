@@ -3219,3 +3219,69 @@ input, select, textarea {
 			}
 
 	}
+/* Default: hide hamburger, show links (desktop) */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Make sure the icon inherits color */
+#menu-toggle i {
+  pointer-events: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  #header .inner {
+    position: relative;
+    padding-right: 60px; /* space for the menu icon */
+  }
+
+  /* Smaller avatar so it doesn’t eat the whole screen */
+  #header .image.avatar img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* Show hamburger icon on mobile */
+  #menu-toggle {
+    display: block;
+  }
+
+  /* Hide nav links by default on mobile */
+  #nav-links {
+    display: none;
+    margin-top: 10px;
+  }
+
+  /* When header has .nav-open, show the links */
+  #header.nav-open #nav-links {
+    display: block;
+  }
+
+  /* Make each link look like a small menu item */
+  #nav-links h1 {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  /* Push main content down so fixed header doesn't cover it */
+  #main {
+    margin-top: 140px;
+  }
+}
