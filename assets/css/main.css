@@ -3368,4 +3368,15 @@ input, select, textarea {
     color: #49bf9d !important;
   }
 }
+/* Hide avatar image completely on phones */
+@media screen and (max-width: 736px) {
+  #header .image.avatar {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 736px) {
+  #header .inner {
+    padding: 0.8em 1em !important;
+  }
+}
 
