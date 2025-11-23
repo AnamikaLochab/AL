@@ -3346,3 +3346,26 @@ input, select, textarea {
     margin-top: 150px !important;
   }
 }
+/* Mobile nav visual fix: dark dropdown over light content */
+@media screen and (max-width: 736px) {
+  #nav-links {
+    background: rgba(31, 24, 21, 0.97); /* same dark tone as header */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  #nav-links h1 {
+    margin: 0.4em 0;
+  }
+
+  #nav-links h1,
+  #nav-links a {
+    color: #ffffff !important;
+    border-bottom: none;
+  }
+
+  #nav-links a:hover {
+    color: #49bf9d !important;
+  }
+}
+
