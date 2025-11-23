@@ -354,6 +354,18 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var header = document.getElementById('header');
+    var toggle = document.getElementById('menu-toggle');
+
+    if (header && toggle) {
+      toggle.addEventListener('click', function () {
+        header.classList.toggle('nav-open');
+      });
+    }
+  });
+</script>
 
 	</body>
 </html>
