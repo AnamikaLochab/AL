@@ -23,9 +23,9 @@
     --text-light:       #a09088;
     --border:           #ece8e3;
     --card-bg:          #ffffff;
-    --shadow-sm:        0 1px 6px rgba(44, 33, 29, 0.07);
-    --shadow:           0 2px 16px rgba(44, 33, 29, 0.09);
-    --sidebar-width:    320px;
+    --shadow-sm:        none;
+    --shadow:           none;
+    --sidebar-width:    290px;
     --serif:            'Playfair Display', Georgia, serif;
     --sans:             'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -91,7 +91,7 @@ ol, ul {
 }
 
 .sidebar-inner {
-    padding: 3rem 2rem 2.5rem;
+    padding: 3.5rem 2rem 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,7 +166,7 @@ ol, ul {
     letter-spacing: 0.09em;
     text-transform: uppercase;
     padding: 0.62rem 0.9rem;
-    border-radius: 6px;
+    border-radius: 3px;
     transition: color 0.2s, background 0.2s;
     text-align: center;
 }
@@ -197,7 +197,7 @@ ol, ul {
 }
 
 .social-icons a {
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.62);
     font-size: 1.05rem;
     display: block;
     transition: color 0.2s;
@@ -229,7 +229,7 @@ ol, ul {
 }
 
 #menu-toggle:hover {
-    background: #3d2e28;
+    background: var(--accent);
 }
 
 /* Mobile overlay */
@@ -254,17 +254,17 @@ ol, ul {
     width: calc(100% - var(--sidebar-width));
     display: flex;
     justify-content: center;
-    padding: 5rem 3rem 4rem;
+    padding: 3.5rem 2.5rem 3rem;
 }
 
 .content-inner {
     width: 100%;
-    max-width: 820px;
+    max-width: 1040px;
 }
 
 /* === SECTIONS === */
 section {
-    padding: 4rem 0;
+    padding: 2.75rem 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -278,7 +278,7 @@ section:last-of-type {
 
 /* Section header */
 .section-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-header h2 {
@@ -297,7 +297,7 @@ section:last-of-type {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 2.2rem;
+    width: 3rem;
     height: 2px;
     background: var(--accent);
     border-radius: 2px;
@@ -308,7 +308,7 @@ section:last-of-type {
     font-size: 0.97rem;
     line-height: 1.85;
     color: var(--text-mid);
-    max-width: 72ch;
+    max-width: 100%;
 }
 
 /* === PUBLICATIONS === */
@@ -324,26 +324,35 @@ section:last-of-type {
 }
 
 .pub-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+    align-content: start;
     background: var(--card-bg);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent);
-    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    border-left: 3px solid var(--border);
+    padding: 1.25rem 1.5rem;
     box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.25s, transform 0.25s;
-}
-
-.pub-item--accepted {
-    border-left-color: #183b66;
+    transition: border-color 0.25s, background 0.25s;
 }
 
 .pub-item:hover {
     box-shadow: var(--shadow);
-    transform: translateY(-2px);
+    background: #ffffff;
+    border-color: var(--accent-light);
+}
+
+.pub-item--accepted,
+.pub-item--accepted:hover {
+    border-left-color: var(--accent);
 }
 
 .pub-item h3 {
-    font-family: var(--sans);
-    font-size: 0.93rem;
+    grid-column: 1;
+    grid-row: 1;
+    font-family: var(--serif);
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.55;
     margin-bottom: 0.45rem;
@@ -359,18 +368,29 @@ section:last-of-type {
     color: var(--accent);
 }
 
+.pub-item .pub-authors {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+}
+
 .pub-authors {
     font-size: 0.83rem;
     color: var(--text-mid);
-    line-height: 1.5;
-    margin-bottom: 0.35rem;
+    line-height: 1.7;
+    margin-bottom: 0.55rem;
 }
 
 .pub-venue {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    max-width: 12rem;
+    text-align: right;
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 500;
-    color: #183b66;
+    color: var(--accent);
     font-style: italic;
 }
 
@@ -388,9 +408,10 @@ section:last-of-type {
     align-items: flex-start;
     gap: 1.4rem;
     background: var(--card-bg);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent);
-    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    border-left: 3px solid var(--border);
+    padding: 1.25rem 1.5rem;
     box-shadow: var(--shadow-sm);
 }
 
@@ -493,9 +514,10 @@ section:last-of-type {
 
 .edu-item {
     background: var(--card-bg);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent);
-    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    border-left: 3px solid var(--border);
+    padding: 1.25rem 1.5rem;
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.25s;
 }
@@ -558,7 +580,7 @@ section:last-of-type {
     color: var(--accent);
     background: rgba(191, 96, 71, 0.08);
     padding: 0.3rem 0.7rem;
-    border-radius: 5px;
+    border-radius: 3px;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -575,20 +597,20 @@ section:last-of-type {
     color: var(--text-mid);
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 3px;
     padding: 0.3rem 0.8rem;
 }
 
 /* === FOOTER === */
 #footer {
-    padding: 3rem 0 1rem;
+    padding: 2rem 0 1rem;
     text-align: center;
 }
 
 .footer-collab {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 3px;
     padding: 2.2rem 2.5rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-sm);
@@ -616,7 +638,7 @@ section:last-of-type {
     font-weight: 600;
     color: var(--accent);
     border: 1.5px solid var(--accent);
-    border-radius: 6px;
+    border-radius: 3px;
     padding: 0.5rem 1.3rem;
     transition: background 0.2s, color 0.2s;
     letter-spacing: 0.02em;
@@ -648,7 +670,7 @@ section:last-of-type {
         --sidebar-width: 260px;
     }
     #main {
-        padding: 4rem 2rem 3rem;
+        padding: 3rem 2rem 2.5rem;
     }
 }
 
@@ -669,11 +691,23 @@ section:last-of-type {
     #main {
         margin-left: 0;
         width: 100%;
-        padding: 5rem 1.5rem 3rem;
+        padding: 4.5rem 1.5rem 2.5rem;
     }
 
     .section-header h2 {
         font-size: 1.6rem;
+    }
+
+    .pub-item {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 0.35rem;
+    }
+
+    .pub-venue {
+        grid-column: 1;
+        grid-row: 3;
+        max-width: none;
+        text-align: left;
     }
 
     .award-list li {
@@ -693,6 +727,7 @@ section:last-of-type {
     }
 
     .pub-item,
+    .exp-item,
     .edu-item {
         padding: 1.2rem 1.2rem;
     }
@@ -700,4 +735,9 @@ section:last-of-type {
     .section-header h2 {
         font-size: 1.45rem;
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
 }
