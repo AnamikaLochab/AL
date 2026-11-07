@@ -312,6 +312,11 @@ section:last-of-type {
 }
 
 /* === PUBLICATIONS === */
+.pub-contribution-note {
+    text-align: right;
+    margin-top: 0.75rem;
+}
+
 .pub-list {
     display: flex;
     flex-direction: column;
@@ -325,6 +330,10 @@ section:last-of-type {
     padding: 1.4rem 1.6rem;
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.pub-item--accepted {
+    border-left-color: #183b66;
 }
 
 .pub-item:hover {
@@ -361,7 +370,7 @@ section:last-of-type {
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--accent);
+    color: #183b66;
     font-style: italic;
 }
 
@@ -370,6 +379,10 @@ section:last-of-type {
 }
 
 /* === EXPERIENCE === */
+.exp-item + .exp-item {
+    margin-top: 1.4rem;
+}
+
 .exp-item {
     display: flex;
     align-items: flex-start;
